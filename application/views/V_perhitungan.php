@@ -3,7 +3,7 @@
 
     <!-- Page Heading -->
     <div class="d-sm-flex align-items-center justify-content-between mt-4 mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= $sub_judul; ?></h1>
+        <h1 class="h3 mb-0 text-gray-800"><?= $sub_judul; ?> untuk pasien : <?php echo $this->session->userdata("nama_pasien");?></h1>
         <a href="<?= base_url('konsultasi'); ?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i class="fas fa-undo-alt fa-sm text-white-50"></i> Kembali</a>
     </div>
 
@@ -102,8 +102,37 @@
                                 <?php
                                 $no = 1;
                                 $jum = 1;
-
-                                foreach ($klas as $row) { ?>
+								$str_umur="";
+								if($this->session->userdata("umur_pasien")=="1")
+								{
+									$str_umur="1-3bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="2")
+								{
+									$str_umur="4-6bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="3")
+								{
+									$str_umur="7-12bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="4")
+								{
+									$str_umur="12-18bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="5")
+								{
+									$str_umur="1.5-2tahun";
+								}
+								if($this->session->userdata("umur_pasien")=="6")
+								{
+									$str_umur="3-5tahun";
+								}
+                                foreach ($klas as $row) { 
+								$usia_stat = strstr(str_replace(" ","",strtolower($row["nama_pertumbuhan"])),trim(strtolower($str_umur)));
+								//echo str_replace(" ","",strtolower($row["nama_pertumbuhan"]));
+								//echo trim(strtolower(trim($str_umur)));
+								if($usia_stat!=false){
+								?>
                                     <tr>
                                         <?php if ($jum <= 1) { ?>
                                             <td align="center" rowspan="<?= $row['jumlah']; ?>"><?= $no++; ?></td>
@@ -117,7 +146,7 @@
                                         <td><?= $row['nama_ciri']; ?></td>
                                         <td><?= $row['bobot']; ?></td>
                                     </tr>
-                                <?php }; ?>
+                                <?php }} ?>
                             </tbody>
                         </table>
                     </div>
@@ -189,9 +218,39 @@
                             
                             <tbody>
                                 <?php
+								$str_umur="";
+								if($this->session->userdata("umur_pasien")=="1")
+								{
+									$str_umur="1-3bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="2")
+								{
+									$str_umur="4-6bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="3")
+								{
+									$str_umur="7-12bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="4")
+								{
+									$str_umur="12-18bulan";
+								}
+								if($this->session->userdata("umur_pasien")=="5")
+								{
+									$str_umur="1.5-2tahun";
+								}
+								if($this->session->userdata("umur_pasien")=="6")
+								{
+									$str_umur="3-5tahun";
+								}
                                 $no = 1;
                                 // Tampilkan ke tabel
-                                foreach ($final as $row) { ?>
+                                foreach ($final as $row) { 
+								$usia_stat = strstr(str_replace(" ","",strtolower($row["nama_pertumbuhan"])),trim(strtolower($str_umur)));
+								//echo str_replace(" ","",strtolower($row["nama_pertumbuhan"]));
+								//echo trim(strtolower(trim($str_umur)));
+								if($usia_stat!=false){
+								?>
                                     <tr>
                                         <strong>
                                             <td><?= $no++; ?></td>
@@ -205,7 +264,7 @@
                                         </strong>
                                     </tr>
                                 <?php
-                                }
+                                }}
                                 ?>
                             </tbody>
                         </table>

@@ -15,6 +15,7 @@
                         Silahkan Login atau Register dulu
                     </h5>
                 </div>
+				<div class="row">
                 <div class="col-md-6">
                     <form class="user" method="post"  autocomplete="false" action="<?= base_url('registerpasien'); ?>">
 					<p>&nbsp;</p>
@@ -61,6 +62,7 @@
                         <button type="submit" class="btn btn-primary"> &nbsp;Login</button>
                     </form>
                 </div>
+				</div>
             </div>
         </div>
     </div>

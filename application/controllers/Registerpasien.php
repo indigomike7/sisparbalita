@@ -17,6 +17,8 @@ class Registerpasien extends CI_Controller
     public function logoutpasien()
     {
 		$this->session->unset_userdata('email');
+		$this->session->unset_userdata('nama_pasien');
+		$this->session->unset_userdata('umur_pasien');
 		redirect('awal');
     }
     public function index()
@@ -62,17 +64,13 @@ class Registerpasien extends CI_Controller
 
             $this->db->insert('user', $data);
                 $data = [
-                    'email' => $email, 'umur_pasien'=>$umur_pasien
+                    'email' => $email, 'umur_pasien'=>$umur_pasien,'nama_pasien'=>$nama_pasien
                 ];
                 $this->session->set_userdata($data);
 
             $this->session->set_flashdata('info', '<div class="alert alert-success" role="alert">Berhasil registrasi</div>');
             redirect('konsultasi');
         }
-        $this->load->view('user/v_header', $data);
-        $this->load->view('user/v_sidebar');
-        $this->load->view('v_register', $data);
-        $this->load->view('user/v_footer');
     }
 
     public function loginpasien()
@@ -99,13 +97,15 @@ class Registerpasien extends CI_Controller
 			if($exist > 0 )
 			{
 				$umur_pasien=1;
-				$query= $this->db->query("select email,password, umur_pasien from user where email = '".$email."' and password='".$password."'");
+				$nama_pasien="";
+				$query= $this->db->query("select email,password,nama_pasien, umur_pasien from user where email = '".$email."' and password='".$password."'");
 				foreach($query->result() as $row)
 				{
 					$umur_pasien=$row->umur_pasien;
+					$nama_pasien=$row->nama_pasien;
 				}
                 $datax = [
-                    'email' => $email, 'umur_pasien'=>$umur_pasien
+                    'email' => $email, 'umur_pasien'=>$umur_pasien, 'nama_pasien'=>$nama_pasien
                 ];
                 $this->session->set_userdata($datax);
 				redirect("konsultasi");

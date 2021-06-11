@@ -23,15 +23,55 @@
                     </thead>
                     <tbody>
                         <?php
+								$str_umur="";
+								if($this->session->userdata("umur_pasien"))
+								{
+									if($this->session->userdata("umur_pasien")=="1")
+									{
+										$str_umur="1-3bulan";
+									}
+									if($this->session->userdata("umur_pasien")=="2")
+									{
+										$str_umur="4-6bulan";
+									}
+									if($this->session->userdata("umur_pasien")=="3")
+									{
+										$str_umur="7-12bulan";
+									}
+									if($this->session->userdata("umur_pasien")=="4")
+									{
+										$str_umur="12-18bulan";
+									}
+									if($this->session->userdata("umur_pasien")=="5")
+									{
+										$str_umur="1.5-2tahun";
+									}
+									if($this->session->userdata("umur_pasien")=="6")
+									{
+										$str_umur="3-5tahun";
+									}
+								}
+								else
+								{
+									$usia_stat=true;
+								}
                         $no = 1;
-                        foreach ($macam as $row) { ?>
+                        foreach ($macam as $row) { 
+						if($this->session->userdata("umur_pasien"))
+						{
+								$usia_stat = strstr(str_replace(" ","",strtolower($row["nama_pertumbuhan"])),trim(strtolower($str_umur)));
+						}
+								//echo str_replace(" ","",strtolower($row["nama_pertumbuhan"]));
+								//echo trim(strtolower(trim($str_umur)));
+								if($usia_stat!=false){
+						?>
                             <tr>
                                 <td><?= $no++; ?></td>
                                 <td style="font-weight:"><?= $row['nama_pertumbuhan']; ?></td>
                                 <td><?= $row['detail_pertumbuhan']; ?></td>
                                 <td><?= $row['solusi_pertumbuhan']; ?></td>
                             </tr>
-                        <?php }; ?>
+                        <?php }} ?>
                     </tbody>
                 </table>
             </div>
