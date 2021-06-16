@@ -19,6 +19,7 @@
         <div class="collapse show" id="collapseCardExample">
             <div class="card-body">
                 <h5 class="card-title"><strong><?= $status['nama_pertumbuhan']; ?></strong></h5>
+                <p class="card-text text-justify"><b>ID Pertumbuhan : <?= $status['id_pertumbuhan']; ?></b></p>
                 <p class="card-text text-justify"><?= $status['detail_pertumbuhan']; ?></p>
             </div>
         </div>

@@ -64,6 +64,15 @@
                     <span>Konsultasi</span></a>
             </li>
 
+            <hr class="sidebar-divider my-0">
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= base_url('user'); ?>">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Pasien</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

@@ -6,7 +6,7 @@ class M_klasifikasi extends CI_Model
 
     public function getData()
     {
-        $query = "SELECT tb_klasifikasi.*, tb_pertumbuhan.nama_pertumbuhan, tb_motorik.kode ,tb_motorik.nama_ciri , tb_motorik.bobot
+        $query = "SELECT tb_klasifikasi.*, tb_motorik.kode,tb_pertumbuhan.nama_pertumbuhan, tb_motorik.kode ,tb_motorik.nama_ciri , tb_motorik.bobot
                     FROM tb_klasifikasi  
                     JOIN tb_pertumbuhan ON tb_klasifikasi.id_pertumbuhan = tb_pertumbuhan.id_pertumbuhan 
                     JOIN tb_motorik ON tb_klasifikasi.id_ciri = tb_motorik.id_ciri
@@ -36,7 +36,7 @@ class M_klasifikasi extends CI_Model
 
     public function getById($id_pertumbuhan)
     {
-        $query = "SELECT tb_klasifikasi.*, tb_pertumbuhan.nama_pertumbuhan,tb_motorik.kode , tb_motorik.nama_ciri ,tb_motorik.umur,                    tb_motorik.bobot
+        $query = "SELECT tb_klasifikasi.*, tb_klasifikasi.id_pertumbuhan, tb_motorik.kode, tb_pertumbuhan.nama_pertumbuhan,tb_motorik.kode , tb_motorik.nama_ciri ,tb_motorik.umur,                    tb_motorik.bobot
                     FROM tb_klasifikasi  
                     JOIN tb_pertumbuhan ON tb_klasifikasi.id_pertumbuhan = tb_pertumbuhan.id_pertumbuhan 
                     JOIN tb_motorik ON tb_klasifikasi.id_ciri = tb_motorik.id_ciri

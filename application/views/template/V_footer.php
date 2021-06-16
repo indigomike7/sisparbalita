@@ -84,7 +84,7 @@
                      <select class="custom-select" id="gejala[]" name="gejala[]">
                         <option selected>Pilih Gejala...</option>
                         <?php foreach ($gejala as $row) { ?>
-                           <option value="<?= $row['id_ciri']; ?>"><?= $row['nama_ciri']; ?></option>
+                           <option value="<?= $row['id_ciri']; ?>"><?= $row['kode']; ?> - <?= $row['nama_ciri']; ?></option>
                         <?php }; ?>
                      </select>
                      <a class="btn btn-danger ml-2" href="#" onclick="hapusElemen('#srow${idf}')"><i class="fas fa-trash"></i></a>

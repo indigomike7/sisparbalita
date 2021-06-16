@@ -24,7 +24,7 @@
                      <select class="custom-select" id="status" name="status">
                         <option value="" selected>Pilih Status...</option>
                         <?php foreach ($status as $row) { ?>
-                           <option value="<?= $row['id_pertumbuhan']; ?>"><?= $row['nama_pertumbuhan']; ?></option>
+                           <option value="<?= $row['id_pertumbuhan']; ?>"><?= $row['id_pertumbuhan']; ?> - <?= $row['nama_pertumbuhan']; ?></option>
                         <?php }; ?>
                      </select>
                   </div>

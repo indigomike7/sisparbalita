@@ -21,34 +21,35 @@
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>ID Pertumbuhan</th>
-                            <th>Kode Motorik</th>
-                            <th>Pertumbuhan Kasus</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Nama Pasien</th>
                             <th style="width:100px">Aksi</th>
                         </tr>
                     </thead>
                     <tfoot>
                         <tr>
                             <th>No</th>
-                            <th>ID Pertumbuhan</th>
-                            <th>Kode Motorik</th>
-                            <th>Pertumbuhan Kasus</th>
+                            <th>ID</th>
+                            <th>Email</th>
+                            <th>Nama Pasien</th>
                             <th>Aksi</th>
                         </tr>
                     </tfoot>
                     <tbody>
                         <?php
                         $no = 1;
-                        foreach ($klas as $row) { ?>
+                        foreach ($user as $row) { ?>
                             <tr>
                                 <td><?= $no++; ?></td>
-                                <td><?= $row['id_pertumbuhan']; ?></td>
-                                <td><?= $row['kode']; ?></td>
-                                <td><?= $row['nama_pertumbuhan']; ?></td>
+                                <td><?= $row['id']; ?></td>
+                                <td><?= $row['email']; ?></td>
+                                <td><?= $row['nama_pasien']; ?></td>
                                 <td>
-                                    <a title="Detail Kasus" href="<?= base_url('klasifikasi/detail/') . $row['id_pertumbuhan']; ?>" class="btn btn-circle btn-outline-warning mr-2"><i class="fas fa-info"></i></a>
+                                    <a title="Detail Kasus" href="<?= base_url('user/detail/') . $row['id']; ?>" class="btn btn-circle btn-outline-warning mr-2"><i class="fas fa-info"></i></a>
+                                    <a title="Change Password" href="<?= base_url('user/changepassword/') . $row['id']; ?>" class="btn btn-circle btn-outline-warning mr-2"><i class="fas fa-key"></i></a>
 
-                                    <a title="Hapus Basis Kasus" href="<?= base_url('klasifikasi/hapus/') . $row['id_pertumbuhan']; ?>" class="btn btn-circle btn-outline-danger" onclick="return confirm('Anda yakin menghapus data ini ?');"><i class="fas fa-trash"></i></a>
+                                    <a title="Hapus Basis Kasus" href="<?= base_url('user/hapus/') . $row['id']; ?>" class="btn btn-circle btn-outline-danger" onclick="return confirm('Anda yakin menghapus data ini ?');"><i class="fas fa-trash"></i></a>
                                 </td>
                             </tr>
                         <?php }; ?>
